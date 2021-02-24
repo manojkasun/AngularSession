@@ -1,0 +1,21 @@
+
+<div class="card col-md-6 offset-3" style="margin-top: 120px" >
+
+    <h3 align="center">Login Form</h3>
+    <form  #loginForm="ngForm"  (ngSubmit)="userLogin(loginForm)">
+      <div class="form-group">
+        <label for="exampleInputEmail1">Email address</label>
+        <input type="email" class="form-control" (input)="liveEmail($event)" ngModel name="email" required email id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+        <small id="emailHelp" class="form-text text-muted"> <span class="text-danger" *ngIf="!loginForm.valid" >{{email}} </span><span class="text-success" *ngIf="loginForm.valid" >{{email}} </span> </small>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Password</label>
+        <input type="password"  ngModel name="pass"  (input)="livePass($event)" class="form-control" id="exampleInputPassword1" placeholder="Password">
+        <small id="" class="form-text text-danger" *ngIf="password.length < 8" > Need more {{ 8- password.length }} Characters   </small>
+      </div>
+
+      <button type="button"  [disabled]="!loginForm.valid || password.length < 8"  class="btn btn-primary float-right">Login</button>
+      <br>
+    </form>
+  </div>
+

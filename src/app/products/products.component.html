@@ -1,0 +1,14 @@
+<br>
+<div class="row" style="margin-bottom: 100px">
+
+    <div class="card offset-sm-1" style="width: 20rem;" *ngFor="let product of products">
+      <img class="card-img-top" src="{{product.image}}" height="400px" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">{{ product.name}}</h5>
+        <p class="card-text">{{product.description}}</p>
+        <p class="card-text">RS: {{product.price}}</p>
+        <a (click)="share()" class="btn btn-primary">Add Cart</a>
+      </div>
+      <br>
+    </div>
+
