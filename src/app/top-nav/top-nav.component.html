@@ -10,8 +10,8 @@
     <div class="navbar-nav">
       <a class="nav-item nav-link" href="#">Home <span class="sr-only">(current)</span></a>
       <a class="nav-item nav-link" [routerLink]="['/products']" routerLinkActive="active">Products</a>
-      <a class="nav-item nav-link" [routerLink]="['/login']"  routerLinkActive="active" >Login</a>
-
+      <a class="nav-item nav-link" *ngIf="user == null" [routerLink]="['/login']"  routerLinkActive="active" >Login</a>
+      <a class="nav-item nav-link" *ngIf="user != null" [routerLink]="['/myCart']"  routerLinkActive="active" >My Cart</a>
     </div>
   </div>
 </nav>

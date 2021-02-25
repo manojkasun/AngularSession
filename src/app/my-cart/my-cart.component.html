@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="col-md-12" >
+
+    <table class="table">
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col">Product Name</th>
+        <th scope="col">Description</th>
+        <th scope="col">Price</th>
+        <th scope="col">Payments</th>
+        <th scope="col">Add On</th>
+        <th scope="col">Action</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let prd of cart">
+        <td>{{prd.productName}}</td>
+        <td>{{prd.description}}</td>
+        <td>{{prd.price}}</td>
+        <td>{{prd.payment}}</td>
+        <td>{{prd.buyDate}}</td>
+
+        <td>
+          <form #paymentForm="ngForm" (ngSubmit)="payments(paymentForm)">
+
+            <input type="hidden" ngModel="{{ prd._id}}"  name="id" value="{{ prd._id}}" >
+            <input type="hidden" ngModel="{{ prd.price}}"  name="price" value="{{ prd.price}}" >
+            <button  [disabled]="prd.payment == 'paid'" type="submit" class="btn btn-success btn-round">Make Payment</button>
+          </form>
+
+        </td>
+      </tr>
+
+      </tbody>
+    </table>
+  </div>
+</div>

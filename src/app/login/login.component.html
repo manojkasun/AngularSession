@@ -2,6 +2,9 @@
 <div class="card col-md-6 offset-3" style="margin-top: 120px" >
 
     <h3 align="center">Login Form</h3>
+  <div class="alert alert-danger "  *ngIf="error"  role="alert">
+    Logging Failed!!  <span style="font-weight: bold">{{ error }}</span>
+  </div>
     <form  #loginForm="ngForm"  (ngSubmit)="userLogin(loginForm)">
       <div class="form-group">
         <label for="exampleInputEmail1">Email address</label>
@@ -14,8 +17,9 @@
         <small id="" class="form-text text-danger" *ngIf="password.length < 8" > Need more {{ 8- password.length }} Characters   </small>
       </div>
 
-      <button type="button"  [disabled]="!loginForm.valid || password.length < 8"  class="btn btn-primary float-right">Login</button>
-      <br>
+      <button type="submit"  [disabled]="!loginForm.valid || password.length < 8"  class="btn btn-primary float-right">Login</button>
+      <br><br>
+     Havent an Account <a [routerLink]="['/signup']" >Sign up</a>
     </form>
   </div>
 

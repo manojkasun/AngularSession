@@ -11,5 +11,7 @@ export class TopNavComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  get user(): any {
+    return localStorage.getItem('userName');
+  }
 }

@@ -1,13 +1,23 @@
 <br>
+<div class="alert alert-success col-md-4 offset-4" *ngIf="message != ''" role="alert">
+  {{ message }}
+</div>
 <div class="row" style="margin-bottom: 100px">
 
-    <div class="card offset-sm-1" style="width: 20rem;" *ngFor="let product of products">
+    <div class="card " style="width: 20rem; margin: 50px 0 0 2%" *ngFor="let product of products">
       <img class="card-img-top" src="{{product.image}}" height="400px" alt="Card image cap">
       <div class="card-body">
         <h5 class="card-title">{{ product.name}}</h5>
         <p class="card-text">{{product.description}}</p>
         <p class="card-text">RS: {{product.price}}</p>
-        <a (click)="share()" class="btn btn-primary">Add Cart</a>
+
+        <form #productForm="ngForm" (ngSubmit)="addCart(productForm)">
+          <input type="hidden" ngModel="{{product.name}}"name="pName" value="{{product.name}}" >
+          <input type="hidden" ngModel="{{product.description}}"name="pDes" value="{{product.description}}" >
+          <input type="hidden" ngModel="{{product.price}}"name="pPrice" value="{{product.price}}" >
+          <button type="submit"  [disabled]="user == null" class="btn btn-primary">Add Cart</button>
+        </form>
+
       </div>
       <br>
     </div>
